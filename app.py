@@ -14,7 +14,7 @@ import os
 with st.sidebar:
     st.title('🤗💬 LLM Chat App')
     
- load_dotenv()
+load_dotenv()
  
 def main():
     st.header("Chat with PDF 💬")
