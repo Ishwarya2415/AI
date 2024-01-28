@@ -11,7 +11,8 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
-  chat_app = ChatApp(st.secrets["OPENAI_API_KEY"])
+chat_app = ChatApp(st.secrets["OPENAI_API_KEY"])
+  
 # Sidebar contents
 with st.sidebar:
     st.title('🤗💬 LLM Chat App')
