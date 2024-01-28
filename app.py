@@ -1,9 +1,7 @@
 import streamlit as st
-
 from dotenv import load_dotenv
 import pickle
 from PyPDF2 import PdfReader
-
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
@@ -11,14 +9,12 @@ from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.callbacks import get_openai_callback
 import os
-#chat_app = ChatApp(st.secrets["OPENAI_API_KEY"])
-  
+ 
 # Sidebar contents
 with st.sidebar:
     st.title('🤗💬 LLM Chat App')
-
- 
-load_dotenv()
+    
+ load_dotenv()
  
 def main():
     st.header("Chat with PDF 💬")
@@ -57,6 +53,8 @@ def main():
             with open(f"{store_name}.pkl", "wb") as f:
                 pickle.dump(VectorStore, f)
  
+        # embeddings = OpenAIEmbeddings()
+        # VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
  
         # Accept user questions/query
         query = st.text_input("Ask questions about your PDF file:")
@@ -65,7 +63,7 @@ def main():
         if query:
             docs = VectorStore.similarity_search(query=query, k=3)
  
-            llm = OpenAI(model_name='gpt-3.5-turbo')
+            llm = OpenAI()
             chain = load_qa_chain(llm=llm, chain_type="stuff")
             with get_openai_callback() as cb:
                 response = chain.run(input_documents=docs, question=query)
