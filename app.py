@@ -1,5 +1,5 @@
 import streamlit as st
-from ChatApp import ChatApp
+
 from dotenv import load_dotenv
 import pickle
 from PyPDF2 import PdfReader
