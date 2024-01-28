@@ -3,7 +3,7 @@ from ChatApp import ChatApp
 from dotenv import load_dotenv
 import pickle
 from PyPDF2 import PdfReader
-from streamlit_extras.add_vertical_space import add_vertical_space
+
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
@@ -15,9 +15,7 @@ import os
 # Sidebar contents
 with st.sidebar:
     st.title('🤗💬 LLM Chat App')
-    
-    add_vertical_space(5)
-    st.write('Made by Ishwarya ❤️  ')
+
  
 load_dotenv()
  
